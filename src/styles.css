@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/newsreader/opsz.css';
+@import '@fontsource-variable/public-sans/index.css';
+@import '@fontsource-variable/jetbrains-mono/index.css';
+
+/* Thiago Souza design system, light theme (thiago-brand/project/tokens.json). */
+@theme {
+  --color-ground: #f3f5f0;
+  --color-raised: #ffffff;
+  --color-sunken: #e7ebe2;
+  --color-line: #d2d9cb;
+  --color-line-strong: #7a8771;
+  --color-ink: #15201a;
+  --color-ink-muted: #4f5c52;
+  --color-mangrove: #1f5a3f;
+  --color-mangrove-soft: #dbeadf;
+  --color-on-mangrove: #f3f5f0;
+  --color-mango: #a84d05;
+  --color-mango-soft: #fbe8cf;
+  --color-good: #0b6e6e;
+  --color-good-soft: #dcefee;
+  --color-poor: #c0262d;
+  --color-poor-soft: #f8e3e3;
+
+  --font-display: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Public Sans Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-mango);
+    outline-offset: 2px;
+  }
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
