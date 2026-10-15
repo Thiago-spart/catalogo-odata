@@ -42,6 +42,16 @@
   h3 {
     text-wrap: balance;
   }
+  ::selection {
+    background: var(--color-mangrove-soft);
+    color: var(--color-ink);
+  }
+  input {
+    caret-color: var(--color-mangrove);
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
   :focus-visible {
     outline: 2px solid var(--color-mango);
     outline-offset: 2px;
@@ -56,4 +66,13 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
+}
+
+/* On phones the category row scrolls sideways; the fade at the edge says so. */
+@utility chip-scroll {
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+  @media (width >= 64rem) {
+    mask-image: none;
+  }
 }

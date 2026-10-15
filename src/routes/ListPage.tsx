@@ -44,7 +44,7 @@ export function ListPage() {
         <div className="flex items-baseline justify-between gap-3">
           <h1 className="font-display text-[22px] leading-7 font-semibold tracking-[-0.01em] lg:text-[32px] lg:leading-[38px]">Produtos</h1>
           <p aria-live="polite" className="font-mono text-xs text-ink-muted tabular-nums lg:text-[13px]">
-            {list.data ? `${plural(total, 'produto', 'produtos')} · página ${Math.min(search.page, pages)} de ${pages}` : ' '}
+            {list.data ? (total === 0 ? 'Nenhum resultado' : `${plural(total, 'produto', 'produtos')} · página ${Math.min(search.page, pages)} de ${pages}`) : ' '}
           </p>
         </div>
 

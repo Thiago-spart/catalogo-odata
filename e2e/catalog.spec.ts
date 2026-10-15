@@ -14,7 +14,7 @@ test('search, open a product and come back with the filters kept', async ({ page
   await expect(page.getByRole('heading', { level: 1, name: "Chef Anton's Cajun Seasoning" })).toBeVisible();
   await expect(page.getByText('New Orleans Cajun Delights')).toBeVisible();
 
-  await page.getByRole('link', { name: '← Voltar aos produtos' }).click();
+  await page.getByRole('link', { name: 'Voltar aos produtos' }).click();
   await expect(page.getByRole('searchbox', { name: 'Buscar produto' })).toHaveValue('chef');
 });
 

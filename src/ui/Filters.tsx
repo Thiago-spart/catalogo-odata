@@ -55,10 +55,13 @@ export function Filters({ search, categories, onChange }: Props) {
         />
       </div>
 
-      <div role="group" aria-label="Categoria" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0">
+      <div role="group" aria-label="Categoria" className="chip-scroll -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0">
         <Chip selected={search.category === undefined} onClick={() => onChange({ category: undefined })}>
           Todas
         </Chip>
+        {categories === undefined
+          ? [72, 96, 88, 104].map((w) => <span key={w} aria-hidden="true" style={{ width: w }} className="h-9 shrink-0 animate-pulse rounded bg-sunken motion-reduce:animate-none" />)
+          : null}
         {categories?.map((c) => (
           <Chip key={c.CategoryID} selected={search.category === c.CategoryID} onClick={() => onChange({ category: c.CategoryID })}>
             {c.CategoryName}
@@ -69,10 +72,11 @@ export function Filters({ search, categories, onChange }: Props) {
       <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
         <label className="flex items-center gap-2 text-sm">
           <span className="text-ink-muted">Ordenar</span>
+          <span className="relative">
           <select
             value={search.sort}
             onChange={(e) => onChange({ sort: e.target.value as SortKey })}
-            className="min-h-10 rounded border border-line-strong bg-raised px-2 text-sm"
+            className="min-h-10 appearance-none rounded border border-line-strong bg-raised pr-8 pl-3 text-sm"
           >
             {sortKeys.map((k) => (
               <option key={k} value={k}>
@@ -80,6 +84,10 @@ export function Filters({ search, categories, onChange }: Props) {
               </option>
             ))}
           </select>
+          <svg aria-hidden="true" viewBox="0 0 24 24" className="pointer-events-none absolute top-1/2 right-2.5 size-4 -translate-y-1/2 text-ink-muted" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+          </span>
         </label>
         <label className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
           <input

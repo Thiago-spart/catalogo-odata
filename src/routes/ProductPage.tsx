@@ -24,8 +24,11 @@ export function ProductPage() {
 
   return (
     <main id="conteudo" className="mx-auto flex max-w-2xl flex-col gap-4 px-4 pt-3 pb-10 lg:pt-8">
-      <Link to="/" search={search} className="inline-flex min-h-11 items-center self-start text-[15px] font-semibold text-mangrove hover:underline">
-        ← Voltar aos produtos
+      <Link to="/" search={search} className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-semibold text-mangrove hover:underline">
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 12H5M11 18l-6-6 6-6" />
+        </svg>
+        Voltar aos produtos
       </Link>
 
       {product.isPending ? (
@@ -47,7 +50,6 @@ export function ProductPage() {
       ) : (
         <article className="flex flex-col gap-4">
           <header className="flex flex-col gap-1.5">
-            <p className="label">{product.data.Category?.CategoryName ?? 'Sem categoria'}</p>
             <h1 className="font-display text-[32px] leading-[38px] font-semibold tracking-[-0.01em]">{product.data.ProductName}</h1>
             <p className="flex flex-wrap items-center gap-3">
               <span className="font-mono text-2xl font-medium tracking-[-0.02em] tabular-nums">{formatPrice(product.data.UnitPrice)}</span>
@@ -57,6 +59,7 @@ export function ProductPage() {
 
           <dl className="divide-y divide-line rounded-lg border border-line bg-raised">
             {[
+              ['Categoria', product.data.Category?.CategoryName ?? '—'],
               ['Quantidade por unidade', product.data.QuantityPerUnit ?? '—'],
               ['Em estoque', String(product.data.UnitsInStock ?? 0)],
               ['Em pedido', String(product.data.UnitsOnOrder ?? 0)],

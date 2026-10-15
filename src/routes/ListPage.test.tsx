@@ -73,7 +73,7 @@ describe('product list', () => {
     await user.click(await screen.findByRole('link', { name: /Chai/ }));
     expect(await screen.findByRole('heading', { name: 'Chai', level: 1 })).toBeInTheDocument();
     expect(screen.getByText('Exotic Liquids')).toBeInTheDocument();
-    await user.click(screen.getByRole('link', { name: '← Voltar aos produtos' }));
+    await user.click(screen.getByRole('link', { name: 'Voltar aos produtos' }));
     expect(router.state.location.pathname).toBe('/');
     expect(router.state.location.search).toMatchObject({ category: 1 });
   });

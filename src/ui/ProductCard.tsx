@@ -20,15 +20,15 @@ export function ProductCard({ product, search }: { product: ProductSummary; sear
         onMouseEnter={prefetch}
         onFocus={prefetch}
         onTouchStart={prefetch}
-        className="flex h-full flex-col gap-2 rounded-lg border border-line bg-raised px-4 py-3.5 transition-colors hover:border-line-strong"
+        className="flex h-full flex-col gap-2 rounded-lg border border-line bg-raised px-4 py-3.5 transition-colors hover:border-line-strong active:bg-ground"
       >
-        <span className="label">{product.Category?.CategoryName ?? 'Sem categoria'}</span>
         <span className="flex items-baseline justify-between gap-3">
           <span className="font-display text-lg leading-6 font-semibold">{product.ProductName}</span>
           <span className="shrink-0 font-mono text-[15px] font-medium tabular-nums">{formatPrice(product.UnitPrice)}</span>
         </span>
-        <span>
+        <span className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1">
           <StockTag stock={product.UnitsInStock} discontinued={product.Discontinued} />
+          <span className="text-sm text-ink-muted">{product.Category?.CategoryName ?? 'Sem categoria'}</span>
         </span>
       </Link>
     </li>
